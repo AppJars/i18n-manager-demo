@@ -1,0 +1,210 @@
+/*-
+ * #%L
+ * I18n Manager AppJars - Demo
+ * %%
+ * Copyright (C) 2023 - 2026 AppJars
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ */
+[slot='drawer'] {
+  background-image: linear-gradient(0deg, var(--lumo-shade-5pct), var(--lumo-shade-5pct));
+}
+
+/* Landing page (HomeView) — generic home-* classes, meant to be reused across demos */
+.home-view {
+  margin: 0 auto;
+  max-width: 60rem;
+  padding: var(--lumo-space-l);
+}
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--lumo-space-s);
+  text-align: center;
+  padding-bottom: var(--lumo-space-m);
+}
+
+.home-hero .home-logo {
+  width: 144px;
+  height: auto;
+}
+
+.home-hero .home-tagline {
+  color: var(--lumo-secondary-text-color);
+  font-size: var(--lumo-font-size-l);
+  max-width: 44rem;
+  margin: 0;
+}
+
+.home-section {
+  padding-top: var(--lumo-space-m);
+}
+
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--lumo-space-m);
+}
+
+.home-feature-icon {
+  color: var(--lumo-primary-color);
+}
+
+.home-howto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lumo-space-s);
+  background-color: var(--lumo-contrast-5pct);
+  border-radius: var(--lumo-border-radius-m);
+  padding: var(--lumo-space-m);
+}
+
+.home-howto-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--lumo-space-m);
+  flex-wrap: wrap;
+}
+
+.home-howto-label {
+  font-family: var(--lumo-font-family-monospace, monospace);
+  background-color: var(--lumo-contrast-10pct);
+  border-radius: var(--lumo-border-radius-s);
+  padding: 0 var(--lumo-space-s);
+  white-space: nowrap;
+}
+
+.home-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--lumo-space-s);
+  flex-wrap: wrap;
+  padding-top: var(--lumo-space-m);
+}
+
+.home-actions vaadin-menu-bar vaadin-menu-bar-button > div {
+  display: flex;
+  align-items: center;
+  gap: var(--lumo-space-xs);
+}
+
+.home-links {
+  display: flex;
+  gap: var(--lumo-space-l);
+  flex-wrap: wrap;
+}
+
+.tour-menu vaadin-menu-bar-button > div,
+.tour-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--lumo-space-xs);
+}
+
+/* Guided tour (Driver.js) step boxes.
+
+   Driver's own stylesheet is injected when the engine module is dynamically imported, so it lands
+   in the document after this file: every rule below needs one extra selector to outweigh it. */
+
+/* Driver caps the box at 300px, which turns the steps that list a menu's entries into a very tall
+   column. The description scrolls instead of the box itself: the arrow is positioned outside the
+   box, so overflow on .driver-popover would clip it, and the title and the buttons have to stay
+   in place. */
+body .driver-popover {
+  max-width: 420px;
+}
+
+body .driver-popover-description {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Driver resets the box with `all: unset` and then hard-codes white, dark grey and Helvetica, so
+   the tour would be the one part of the demo that ignores the theme. */
+body .driver-popover {
+  background-color: var(--lumo-base-color);
+  color: var(--lumo-body-text-color);
+  border-radius: var(--lumo-border-radius-l);
+  box-shadow: var(--lumo-box-shadow-m);
+}
+
+body .driver-popover * {
+  font-family: var(--lumo-font-family);
+}
+
+body .driver-popover-title {
+  color: var(--lumo-header-text-color);
+  font-size: var(--lumo-font-size-l);
+}
+
+body .driver-popover-description {
+  font-size: var(--lumo-font-size-s);
+}
+
+body .driver-popover-progress-text {
+  color: var(--lumo-secondary-text-color);
+  font-size: var(--lumo-font-size-xs);
+}
+
+body .driver-popover-close-btn {
+  color: var(--lumo-tertiary-text-color);
+}
+
+/* The arrow is a square of four borders with a single opaque side, so only that side may be
+   recoloured — setting border-color would turn it into a solid block. */
+body .driver-popover-arrow-side-left {
+  border-left-color: var(--lumo-base-color);
+}
+
+body .driver-popover-arrow-side-right {
+  border-right-color: var(--lumo-base-color);
+}
+
+body .driver-popover-arrow-side-top {
+  border-top-color: var(--lumo-base-color);
+}
+
+body .driver-popover-arrow-side-bottom {
+  border-bottom-color: var(--lumo-base-color);
+}
+
+/* antler-tour marks the secondary step button with a class Driver does not style, so Back and Next
+   came out identical. */
+body .driver-popover-footer .driver-button {
+  padding: var(--lumo-space-xs) var(--lumo-space-s);
+  border: none;
+  border-radius: var(--lumo-border-radius-m);
+  font-size: var(--lumo-font-size-s);
+  font-weight: 500;
+  background-color: var(--lumo-primary-color);
+  color: var(--lumo-primary-contrast-color);
+}
+
+body .driver-popover-footer .driver-button.secondary {
+  background-color: var(--lumo-contrast-5pct);
+  color: var(--lumo-primary-text-color);
+}
+
+/* Driver's own hover rule is as specific as the two above, and it comes later. */
+body .driver-popover-footer .driver-button:hover,
+body .driver-popover-footer .driver-button:focus {
+  background-color: var(--lumo-primary-color-50pct);
+}
+
+body .driver-popover-footer .driver-button.secondary:hover,
+body .driver-popover-footer .driver-button.secondary:focus {
+  background-color: var(--lumo-contrast-10pct);
+}
